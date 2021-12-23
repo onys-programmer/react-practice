@@ -2,10 +2,22 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin'); // installed via npm
 
 module.exports = {
+  module: {
+    rules: [
+      {
+        test: /\.jsx?$/,
+        exclude: /node_modules/,
+        use: 'babel-loader',
+      },
+    ],
+  },
   mode: 'development',
+  entry: {
+    main: './src/index.js',
+  },
   output: {
     path: path.resolve(__dirname, 'dist'),
-    filename: 'main.bundle.js',
+    filename: 'main.js',
   },
   plugins: [new HtmlWebpackPlugin({ template: './src/index.html' })],
   devServer: {
@@ -13,7 +25,7 @@ module.exports = {
       directory: path.join(__dirname, 'public'),
     },
     compress: true,
-    port: 9000,
+    port: 8080,
     client: {
       overlay: true,
     },

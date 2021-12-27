@@ -1,32 +1,9 @@
 import React from 'react';
-import ReactDom from 'react-dom';
+import ReactDOM from 'react-dom';
 
-function renderButton(value) {
-  return (
-    <button type="button">
-      {value}
-    </button>
-  );
-}
+import App from './App.jsx';
 
-function renderButtons() {
-  return (
-    <div>
-      {[1, 2, 3, 4].map((i) => (
-        renderButton(i)
-      ))}
-    </div>
-  );
-}
-
-const element = (
-  <div>
-    <p>Hello, world!</p>
-    <p>Hi</p>
-    {renderButtons()}
-
-  </div>
+ReactDOM.render(
+  <App />,
+  document.getElementById('app'),
 );
-
-ReactDom.render(element, document.getElementById('app'));
-console.log(element);
